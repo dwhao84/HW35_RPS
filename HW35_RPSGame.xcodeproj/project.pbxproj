@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		D376A2D42AD1A1C100893088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2D32AD1A1C100893088 /* AppDelegate.swift */; };
 		D376A2D62AD1A1C100893088 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2D52AD1A1C100893088 /* SceneDelegate.swift */; };
-		D376A2D82AD1A1C100893088 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2D72AD1A1C100893088 /* ViewController.swift */; };
 		D376A2DB2AD1A1C100893088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376A2D92AD1A1C100893088 /* Main.storyboard */; };
 		D376A2DD2AD1A1C300893088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D376A2DC2AD1A1C300893088 /* Assets.xcassets */; };
 		D376A2E02AD1A1C300893088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376A2DE2AD1A1C300893088 /* LaunchScreen.storyboard */; };
 		D376A2EB2AD1A1C300893088 /* HW35_RPSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2EA2AD1A1C300893088 /* HW35_RPSTests.swift */; };
 		D376A2F52AD1A1C300893088 /* HW35_RPSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2F42AD1A1C300893088 /* HW35_RPSUITests.swift */; };
 		D376A2F72AD1A1C300893088 /* HW35_RPSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A2F62AD1A1C300893088 /* HW35_RPSUITestsLaunchTests.swift */; };
+		D376A3042AD1A26F00893088 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A3032AD1A26F00893088 /* GameViewController.swift */; };
+		D376A3062AD1A27F00893088 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A3052AD1A27F00893088 /* ResultViewController.swift */; };
+		D376A30A2AD1A7DC00893088 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A3092AD1A7DC00893088 /* Requirements.swift */; };
+		D376A30C2AD1AAF600893088 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A30B2AD1AAF600893088 /* Sign.swift */; };
+		D376A30F2AD2967300893088 /* LoginUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,19 +40,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D376A2D02AD1A1C100893088 /* HW35_RPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW35_RPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D376A2D02AD1A1C100893088 /* HW35_RPSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW35_RPSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376A2D32AD1A1C100893088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D376A2D52AD1A1C100893088 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D376A2D72AD1A1C100893088 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D376A2DA2AD1A1C100893088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D376A2DC2AD1A1C300893088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D376A2DF2AD1A1C300893088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D376A2E12AD1A1C300893088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D376A2E62AD1A1C300893088 /* HW35_RPSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW35_RPSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D376A2E62AD1A1C300893088 /* HW35_RPSGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW35_RPSGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376A2EA2AD1A1C300893088 /* HW35_RPSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW35_RPSTests.swift; sourceTree = "<group>"; };
-		D376A2F02AD1A1C300893088 /* HW35_RPSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW35_RPSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D376A2F02AD1A1C300893088 /* HW35_RPSGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW35_RPSGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376A2F42AD1A1C300893088 /* HW35_RPSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW35_RPSUITests.swift; sourceTree = "<group>"; };
 		D376A2F62AD1A1C300893088 /* HW35_RPSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW35_RPSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D376A3032AD1A26F00893088 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D376A3052AD1A27F00893088 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		D376A3092AD1A7DC00893088 /* Requirements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Requirements.swift; path = HW35_RPS/Requirements.swift; sourceTree = SOURCE_ROOT; };
+		D376A30B2AD1AAF600893088 /* Sign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
+		D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +97,9 @@
 		D376A2D12AD1A1C100893088 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D376A2D02AD1A1C100893088 /* HW35_RPS.app */,
-				D376A2E62AD1A1C300893088 /* HW35_RPSTests.xctest */,
-				D376A2F02AD1A1C300893088 /* HW35_RPSUITests.xctest */,
+				D376A2D02AD1A1C100893088 /* HW35_RPSGame.app */,
+				D376A2E62AD1A1C300893088 /* HW35_RPSGameTests.xctest */,
+				D376A2F02AD1A1C300893088 /* HW35_RPSGameUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,13 +107,11 @@
 		D376A2D22AD1A1C100893088 /* HW35_RPS */ = {
 			isa = PBXGroup;
 			children = (
-				D376A2D32AD1A1C100893088 /* AppDelegate.swift */,
-				D376A2D52AD1A1C100893088 /* SceneDelegate.swift */,
-				D376A2D72AD1A1C100893088 /* ViewController.swift */,
-				D376A2D92AD1A1C100893088 /* Main.storyboard */,
-				D376A2DC2AD1A1C300893088 /* Assets.xcassets */,
-				D376A2DE2AD1A1C300893088 /* LaunchScreen.storyboard */,
+				D376A3082AD1A29F00893088 /* Supporting */,
 				D376A2E12AD1A1C300893088 /* Info.plist */,
+				D376A3092AD1A7DC00893088 /* Requirements.swift */,
+				D376A30D2AD1AB1800893088 /* Model */,
+				D376A3072AD1A28700893088 /* ViewController */,
 			);
 			path = HW35_RPS;
 			sourceTree = "<group>";
@@ -127,12 +133,42 @@
 			path = HW35_RPSUITests;
 			sourceTree = "<group>";
 		};
+		D376A3072AD1A28700893088 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D376A3032AD1A26F00893088 /* GameViewController.swift */,
+				D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */,
+				D376A3052AD1A27F00893088 /* ResultViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D376A3082AD1A29F00893088 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				D376A2D32AD1A1C100893088 /* AppDelegate.swift */,
+				D376A2D52AD1A1C100893088 /* SceneDelegate.swift */,
+				D376A2D92AD1A1C100893088 /* Main.storyboard */,
+				D376A2DC2AD1A1C300893088 /* Assets.xcassets */,
+				D376A2DE2AD1A1C300893088 /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		D376A30D2AD1AB1800893088 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D376A30B2AD1AAF600893088 /* Sign.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D376A2CF2AD1A1C100893088 /* HW35_RPS */ = {
+		D376A2CF2AD1A1C100893088 /* HW35_RPSGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D376A2FA2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPS" */;
+			buildConfigurationList = D376A2FA2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGame" */;
 			buildPhases = (
 				D376A2CC2AD1A1C100893088 /* Sources */,
 				D376A2CD2AD1A1C100893088 /* Frameworks */,
@@ -142,14 +178,14 @@
 			);
 			dependencies = (
 			);
-			name = HW35_RPS;
+			name = HW35_RPSGame;
 			productName = HW35_RPS;
-			productReference = D376A2D02AD1A1C100893088 /* HW35_RPS.app */;
+			productReference = D376A2D02AD1A1C100893088 /* HW35_RPSGame.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D376A2E52AD1A1C300893088 /* HW35_RPSTests */ = {
+		D376A2E52AD1A1C300893088 /* HW35_RPSGameTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D376A2FD2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSTests" */;
+			buildConfigurationList = D376A2FD2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGameTests" */;
 			buildPhases = (
 				D376A2E22AD1A1C300893088 /* Sources */,
 				D376A2E32AD1A1C300893088 /* Frameworks */,
@@ -160,14 +196,14 @@
 			dependencies = (
 				D376A2E82AD1A1C300893088 /* PBXTargetDependency */,
 			);
-			name = HW35_RPSTests;
+			name = HW35_RPSGameTests;
 			productName = HW35_RPSTests;
-			productReference = D376A2E62AD1A1C300893088 /* HW35_RPSTests.xctest */;
+			productReference = D376A2E62AD1A1C300893088 /* HW35_RPSGameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D376A2EF2AD1A1C300893088 /* HW35_RPSUITests */ = {
+		D376A2EF2AD1A1C300893088 /* HW35_RPSGameUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D376A3002AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSUITests" */;
+			buildConfigurationList = D376A3002AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGameUITests" */;
 			buildPhases = (
 				D376A2EC2AD1A1C300893088 /* Sources */,
 				D376A2ED2AD1A1C300893088 /* Frameworks */,
@@ -178,9 +214,9 @@
 			dependencies = (
 				D376A2F22AD1A1C300893088 /* PBXTargetDependency */,
 			);
-			name = HW35_RPSUITests;
+			name = HW35_RPSGameUITests;
 			productName = HW35_RPSUITests;
-			productReference = D376A2F02AD1A1C300893088 /* HW35_RPSUITests.xctest */;
+			productReference = D376A2F02AD1A1C300893088 /* HW35_RPSGameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +242,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D376A2CB2AD1A1C100893088 /* Build configuration list for PBXProject "HW35_RPS" */;
+			buildConfigurationList = D376A2CB2AD1A1C100893088 /* Build configuration list for PBXProject "HW35_RPSGame" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -219,9 +255,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D376A2CF2AD1A1C100893088 /* HW35_RPS */,
-				D376A2E52AD1A1C300893088 /* HW35_RPSTests */,
-				D376A2EF2AD1A1C300893088 /* HW35_RPSUITests */,
+				D376A2CF2AD1A1C100893088 /* HW35_RPSGame */,
+				D376A2E52AD1A1C300893088 /* HW35_RPSGameTests */,
+				D376A2EF2AD1A1C300893088 /* HW35_RPSGameUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,9 +294,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D376A2D82AD1A1C100893088 /* ViewController.swift in Sources */,
+				D376A30F2AD2967300893088 /* LoginUserNameViewController.swift in Sources */,
 				D376A2D42AD1A1C100893088 /* AppDelegate.swift in Sources */,
+				D376A3042AD1A26F00893088 /* GameViewController.swift in Sources */,
+				D376A30C2AD1AAF600893088 /* Sign.swift in Sources */,
 				D376A2D62AD1A1C100893088 /* SceneDelegate.swift in Sources */,
+				D376A3062AD1A27F00893088 /* ResultViewController.swift in Sources */,
+				D376A30A2AD1A7DC00893088 /* Requirements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +326,12 @@
 /* Begin PBXTargetDependency section */
 		D376A2E82AD1A1C300893088 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D376A2CF2AD1A1C100893088 /* HW35_RPS */;
+			target = D376A2CF2AD1A1C100893088 /* HW35_RPSGame */;
 			targetProxy = D376A2E72AD1A1C300893088 /* PBXContainerItemProxy */;
 		};
 		D376A2F22AD1A1C300893088 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D376A2CF2AD1A1C100893088 /* HW35_RPS */;
+			target = D376A2CF2AD1A1C100893088 /* HW35_RPSGame */;
 			targetProxy = D376A2F12AD1A1C300893088 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -442,7 +482,6 @@
 				INFOPLIST_FILE = HW35_RPS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +509,6 @@
 				INFOPLIST_FILE = HW35_RPS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -502,7 +540,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW35_RPS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HW35_RPS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW35_RPSGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HW35_RPSGame";
 			};
 			name = Debug;
 		};
@@ -522,7 +560,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW35_RPS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HW35_RPS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW35_RPSGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HW35_RPSGame";
 			};
 			name = Release;
 		};
@@ -565,7 +603,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D376A2CB2AD1A1C100893088 /* Build configuration list for PBXProject "HW35_RPS" */ = {
+		D376A2CB2AD1A1C100893088 /* Build configuration list for PBXProject "HW35_RPSGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D376A2F82AD1A1C300893088 /* Debug */,
@@ -574,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D376A2FA2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPS" */ = {
+		D376A2FA2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D376A2FB2AD1A1C300893088 /* Debug */,
@@ -583,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D376A2FD2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSTests" */ = {
+		D376A2FD2AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGameTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D376A2FE2AD1A1C300893088 /* Debug */,
@@ -592,7 +630,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D376A3002AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSUITests" */ = {
+		D376A3002AD1A1C300893088 /* Build configuration list for PBXNativeTarget "HW35_RPSGameUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D376A3012AD1A1C300893088 /* Debug */,
