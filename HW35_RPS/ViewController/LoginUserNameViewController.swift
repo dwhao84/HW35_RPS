@@ -10,13 +10,9 @@ import UIKit
 class LoginUserNameViewController: UIViewController {
 
     let userLabel = UILabel()
-
     let loginBtn = UIButton(type: .custom)
-
     let loginUserNameTextField = UITextField()
-
     var enteredPlayerName: String?
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +24,7 @@ class LoginUserNameViewController: UIViewController {
     func configureLoginView () {
         view.backgroundColor = .white
 
+        // userLabel
         userLabel.font = UIFont.systemFont(ofSize: 22)
         userLabel.text = "Name:"
         userLabel.textColor = .darkGray
@@ -35,6 +32,7 @@ class LoginUserNameViewController: UIViewController {
         userLabel.adjustsFontSizeToFitWidth = true
         view.addSubview(userLabel)
 
+        // loginBtn
         let btnHeight = 15
         loginBtn.configuration = .filled()
         loginBtn.setTitle("Play", for: .normal)
@@ -43,9 +41,8 @@ class LoginUserNameViewController: UIViewController {
         loginBtn.clipsToBounds = true
         view.addSubview(loginBtn)
 
-
+        // loginUserNameTextField
         loginUserNameTextField.delegate = self
-
         loginUserNameTextField.placeholder = "Enter your Name"
         loginUserNameTextField.borderStyle = .roundedRect
         loginUserNameTextField.backgroundColor = .systemGray6
@@ -53,6 +50,7 @@ class LoginUserNameViewController: UIViewController {
         loginUserNameTextField.keyboardAppearance = .default
         view.addSubview(loginUserNameTextField)
 
+        // AutoLayout
         userLabel.translatesAutoresizingMaskIntoConstraints = false
         loginBtn.translatesAutoresizingMaskIntoConstraints = false
         loginUserNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -80,8 +78,7 @@ class LoginUserNameViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: gameVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
-        }
-
+    }
 }
 
 
