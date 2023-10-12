@@ -19,6 +19,7 @@
 		D376A30A2AD1A7DC00893088 /* Requirements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A3092AD1A7DC00893088 /* Requirements.swift */; };
 		D376A30C2AD1AAF600893088 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A30B2AD1AAF600893088 /* Sign.swift */; };
 		D376A30F2AD2967300893088 /* LoginUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */; };
+		D3A088A62AD648DD00AA623C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A088A52AD648DD00AA623C /* GameState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D376A3092AD1A7DC00893088 /* Requirements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Requirements.swift; path = HW35_RPS/Requirements.swift; sourceTree = SOURCE_ROOT; };
 		D376A30B2AD1AAF600893088 /* Sign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sign.swift; sourceTree = "<group>"; };
 		D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserNameViewController.swift; sourceTree = "<group>"; };
+		D3A088A52AD648DD00AA623C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				D376A30B2AD1AAF600893088 /* Sign.swift */,
+				D3A088A52AD648DD00AA623C /* GameState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A088A62AD648DD00AA623C /* GameState.swift in Sources */,
 				D376A30F2AD2967300893088 /* LoginUserNameViewController.swift in Sources */,
 				D376A2D42AD1A1C100893088 /* AppDelegate.swift in Sources */,
 				D376A3042AD1A26F00893088 /* GameViewController.swift in Sources */,

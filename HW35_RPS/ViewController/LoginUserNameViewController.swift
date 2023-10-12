@@ -11,15 +11,16 @@ class LoginUserNameViewController: UIViewController {
 
     let userLabel = UILabel()
     let loginBtn = UIButton(type: .custom)
-    let loginUserNameTextField = UITextField()
+    var loginUserNameTextField = UITextField()
     var enteredPlayerName: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureLoginView()
-    }
 
+        loginUserNameTextField.text = enteredPlayerName
+    }
 
     func configureLoginView () {
         view.backgroundColor = .white
@@ -74,10 +75,9 @@ class LoginUserNameViewController: UIViewController {
     }
 
     @objc func loginBtnTapped () {
-        let gameVC = GameViewController()
-        let navVC = UINavigationController(rootViewController: gameVC)
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+        let gameViewController = GameViewController()
+        gameViewController.playerNameString = enteredPlayerName
+        self.navigationController?.pushViewController(gameViewController, animated: true)
     }
 }
 
@@ -85,5 +85,9 @@ class LoginUserNameViewController: UIViewController {
 extension LoginUserNameViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+
     }
 }
