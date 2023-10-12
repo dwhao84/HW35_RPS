@@ -12,7 +12,7 @@ class GameViewController: UIViewController {
     var playerName: String?
 
     let statusLabel       = UILabel()
-    let playerNameLabel = UILabel()
+    var playerNameLabel = UILabel()
 
     let pcLabel = UILabel()
     let signLabel  = UILabel()
@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
 
         updateUI(forState: .start)
 
-        playerNameLabel.text = playerNameString
+        playerNameLabel.text = playerName
 
         configureUI ()
 
@@ -50,6 +50,8 @@ class GameViewController: UIViewController {
             super.didReceiveMemoryWarning()
             // Dispose of any resources that can be recreated.
         }
+
+
 
     // MARK: - Update GameScoreStatus
     func updateGameScoreStatus () {
@@ -185,6 +187,7 @@ class GameViewController: UIViewController {
         view.addSubview(pcLabel)
     }
 
+    // Control UI Statement by enum.
     func updateUI(forState state: GameState) {
         statusLabel.text = state.status
         switch state {
@@ -212,10 +215,10 @@ class GameViewController: UIViewController {
     }
 
     func play(userSign: Sign) {
-        let computerSign = randomSign()
+//        let computerSign = randomSign(signLabel)
 
-        let gameState = userSign.gameState(against: computerSign)
-        updateUI(forState: gameState)
+//        let gameState = userSign.gameState(against: computerSign)
+//        updateUI(forState: gameState)
 
         signLabel.text = "🤖"
 
@@ -228,10 +231,13 @@ class GameViewController: UIViewController {
         scissorsButton.isEnabled = false
 
         switch userSign {
+
             case .rock:
                 rockButton.isHidden = false
+
             case .paper:
                 paperButton.isHidden = false
+
             case .scissors:
                 scissorsButton.isHidden = false
         }

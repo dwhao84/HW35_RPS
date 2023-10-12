@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D345B1E62AD8754900B0DC78 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D376A2D02AD1A1C100893088 /* HW35_RPSGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW35_RPSGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376A2D32AD1A1C100893088 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D376A2D52AD1A1C100893088 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		D376A2D22AD1A1C100893088 /* HW35_RPS */ = {
 			isa = PBXGroup;
 			children = (
+				D345B1E62AD8754900B0DC78 /* README.md */,
 				D376A3082AD1A29F00893088 /* Supporting */,
 				D376A2E12AD1A1C300893088 /* Info.plist */,
 				D376A3092AD1A7DC00893088 /* Requirements.swift */,

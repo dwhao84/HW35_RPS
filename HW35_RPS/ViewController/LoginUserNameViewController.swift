@@ -18,8 +18,6 @@ class LoginUserNameViewController: UIViewController {
         super.viewDidLoad()
 
         configureLoginView()
-
-        loginUserNameTextField.text = enteredPlayerName
     }
 
     func configureLoginView () {
@@ -57,30 +55,35 @@ class LoginUserNameViewController: UIViewController {
         loginUserNameTextField.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-                userLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 280),
-                userLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            userLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 280),
+            userLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
 
-                loginUserNameTextField.topAnchor.constraint(equalTo: userLabel.bottomAnchor, constant: 20),
-                loginUserNameTextField.leadingAnchor.constraint(equalTo: userLabel.leadingAnchor),
-                loginUserNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-                loginUserNameTextField.heightAnchor.constraint(equalToConstant: 44), // Standard touch target size
+            loginUserNameTextField.topAnchor.constraint(equalTo: userLabel.bottomAnchor, constant: 20),
+            loginUserNameTextField.leadingAnchor.constraint(equalTo: userLabel.leadingAnchor),
+            loginUserNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            loginUserNameTextField.heightAnchor.constraint(equalToConstant: 44), // Standard touch target size
 
-                loginBtn.topAnchor.constraint(equalTo: loginUserNameTextField.bottomAnchor, constant: 20),
-                loginBtn.leadingAnchor.constraint(equalTo: loginUserNameTextField.leadingAnchor),
-                loginBtn.trailingAnchor.constraint(equalTo: loginUserNameTextField.trailingAnchor),
-                loginBtn.heightAnchor.constraint(equalToConstant: 44) // Standard button height
-            ])
+            loginBtn.topAnchor.constraint(equalTo: loginUserNameTextField.bottomAnchor, constant: 20),
+            loginBtn.leadingAnchor.constraint(equalTo: loginUserNameTextField.leadingAnchor),
+            loginBtn.trailingAnchor.constraint(equalTo: loginUserNameTextField.trailingAnchor),
+            loginBtn.heightAnchor.constraint(equalToConstant: 44) // Standard button height
+        ])
 
         loginBtn.addTarget(self, action: #selector(loginBtnTapped), for: .touchUpInside)
     }
 
     @objc func loginBtnTapped () {
+        // Using GUARD LET to make sure the loginUserNameTextField.text equals playerNameLabel & !playerNameLabel.is not Empty, otherwise return EMPTY.
+        guard let playerNameLabel = loginUserNameTextField.text, !playerNameLabel.isEmpty else {
+            return
+        }
+
         let gameViewController = GameViewController()
-        gameViewController.playerNameString = enteredPlayerName
-        self.navigationController?.pushViewController(gameViewController, animated: true)
+        gameViewController.modalPresentationStyle = .fullScreen
+        gameViewController.playerName = playerNameLabel
+        present(gameViewController, animated: true)
     }
 }
-
 
 extension LoginUserNameViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
