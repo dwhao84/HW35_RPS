@@ -138,8 +138,8 @@
 		D376A3072AD1A28700893088 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D376A3032AD1A26F00893088 /* GameViewController.swift */,
 				D376A30E2AD2967300893088 /* LoginUserNameViewController.swift */,
+				D376A3032AD1A26F00893088 /* GameViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

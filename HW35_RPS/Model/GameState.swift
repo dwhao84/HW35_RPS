@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Use the enum to create fourth state when you're playing RPS game.
 enum GameState {
     case start
     case win

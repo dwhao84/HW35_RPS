@@ -17,11 +17,38 @@ class LoginUserNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureLoginView()
+        configureLoginView ()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loginUserNameTextField.becomeFirstResponder()
+        print("viewDidAppear")
+    }
+
+
+    // Create function for tap loginNameTextField.
+    @objc func didTapLoginNameTextField () {
+        print("loginNameTextField tapped")
+    }
+    // Create function for dismiss keyboard.
+    @objc func dissmissKeyboard () {
+        view.endEditing(true)
+    }
+
+// MARK: - Import textField delegate
+    func configureTextFieldDelegate () {
+        loginUserNameTextField.delegate = self
+    }
+
+// MARK: - ConfigureLoginView UI
     func configureLoginView () {
+
+        configureTextFieldDelegate()
+
         view.backgroundColor = .white
+
+        let cornerRadiusValue = 20.0
 
         // userLabel
         userLabel.font = UIFont.systemFont(ofSize: 22)
@@ -32,22 +59,30 @@ class LoginUserNameViewController: UIViewController {
         view.addSubview(userLabel)
 
         // loginBtn
-        let btnHeight = 15
         loginBtn.configuration = .filled()
         loginBtn.setTitle("Play", for: .normal)
         loginBtn.isUserInteractionEnabled = true
-        loginBtn.layer.cornerRadius = CGFloat(btnHeight / 2)
+        loginBtn.layer.cornerRadius = cornerRadiusValue / 4
         loginBtn.clipsToBounds = true
         view.addSubview(loginBtn)
 
         // loginUserNameTextField
-        loginUserNameTextField.delegate = self
         loginUserNameTextField.placeholder = "Enter your Name"
         loginUserNameTextField.borderStyle = .roundedRect
         loginUserNameTextField.backgroundColor = .systemGray6
         loginUserNameTextField.keyboardType = .default
         loginUserNameTextField.keyboardAppearance = .default
+        loginUserNameTextField.layer.cornerRadius = cornerRadiusValue / 4
+        loginUserNameTextField.clipsToBounds = true
+        loginUserNameTextField.isUserInteractionEnabled = true
+        loginUserNameTextField.isEnabled = true
+        loginUserNameTextField.keyboardAppearance = .default
+        loginUserNameTextField.keyboardType = .default
         view.addSubview(loginUserNameTextField)
+
+        // Add tapGesture for loginUserNameTextField.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLoginNameTextField))
+        loginUserNameTextField.addGestureRecognizer(tapGesture)
 
         // AutoLayout
         userLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -73,11 +108,10 @@ class LoginUserNameViewController: UIViewController {
     }
 
     @objc func loginBtnTapped () {
-        // Using GUARD LET to make sure the loginUserNameTextField.text equals playerNameLabel & !playerNameLabel.is not Empty, otherwise return EMPTY.
+        // Using GUARD LET to make sure the loginUserNameTextField.text is playerNameLabel & playerNameLabel is not Empty, otherwise return EMPTY.
         guard let playerNameLabel = loginUserNameTextField.text, !playerNameLabel.isEmpty else {
             return
         }
-
         let gameViewController = GameViewController()
         gameViewController.modalPresentationStyle = .fullScreen
         gameViewController.playerName = playerNameLabel
@@ -86,11 +120,16 @@ class LoginUserNameViewController: UIViewController {
 }
 
 extension LoginUserNameViewController: UITextFieldDelegate {
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
         return true
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        loginUserNameTextField.resignFirstResponder()
+        print("textFieldShouldReturn")
+        return true
     }
+
 }

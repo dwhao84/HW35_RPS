@@ -11,24 +11,35 @@ class GameViewController: UIViewController {
 
     var playerName: String?
 
+    // Define win or loose or draw.
     let statusLabel       = UILabel()
+
+    // Define the player's name.
     var playerNameLabel = UILabel()
 
+    // Define who is the PC.
     let pcLabel = UILabel()
+
+    // Define the
     let signLabel  = UILabel()
 
     var playerNameString : String?
 
     let gameRoundLabel = UILabel()
 
+    // Create the rock icon for game.
     let rockButton      = UIButton(type: .system)
+
+    // Create the scissors icon for game.
     let scissorsButton  = UIButton(type: .system)
+
+    // Create the paper icon for game.
     let paperButton      = UIButton(type: .system)
 
+    // Create the plaAgainButton and set it as plain().
     let playerAgainButton = UIButton(type: .custom)
 
     var progressView = UIProgressView()
-
     var progressViewValueCount = 0.0
     let progressViewMaxValue = 10.0
 
@@ -75,11 +86,13 @@ class GameViewController: UIViewController {
     // MARK: - Configure Button
     func configureButton () {
         let buttonFontSize: CGFloat = 70.0
-        // paperButton UI
+        let cornerRadiusValue = 30.0
+
+        // Configure paperButton
         paperButton.frame = CGRect(x: 20, y: 610, width: 120, height: 120)
         paperButton.setTitle("🖐🏻", for: .normal)
         paperButton.backgroundColor = UIColor.systemGray6
-        paperButton.layer.cornerRadius = 30
+        paperButton.layer.cornerRadius = cornerRadiusValue
         paperButton.clipsToBounds = true
         paperButton.titleLabel?.font = UIFont.systemFont(ofSize: buttonFontSize)
         paperButton.titleLabel?.contentMode = .scaleToFill
@@ -88,11 +101,11 @@ class GameViewController: UIViewController {
         paperButton.isUserInteractionEnabled = true
         view.addSubview(paperButton)
 
-        // rockButton UI
+        // Configure rockButton
         rockButton.frame = CGRect(x: 154, y: 610, width: 120, height: 120)
         rockButton.setTitle("✊🏻", for: .normal)
         rockButton.backgroundColor = UIColor.systemGray6
-        rockButton.layer.cornerRadius = 30
+        rockButton.layer.cornerRadius = cornerRadiusValue
         rockButton.clipsToBounds = true
         rockButton.titleLabel?.font = UIFont.systemFont(ofSize: buttonFontSize)
         rockButton.titleLabel?.contentMode = .scaleToFill
@@ -101,11 +114,11 @@ class GameViewController: UIViewController {
         rockButton.isUserInteractionEnabled = true
         view.addSubview(rockButton)
 
-        // scissorsButton set up
+        // Configure scissorsButton
         scissorsButton.frame = CGRect(x: 288, y: 610, width: 120, height: 120)
         scissorsButton.setTitle("✌🏻", for: .normal)
         scissorsButton.backgroundColor = UIColor.systemGray6
-        scissorsButton.layer.cornerRadius = 30
+        scissorsButton.layer.cornerRadius = cornerRadiusValue
         scissorsButton.clipsToBounds = true
         scissorsButton.titleLabel?.font = UIFont.systemFont(ofSize: buttonFontSize)
         scissorsButton.titleLabel?.contentMode = .scaleToFill
@@ -114,14 +127,18 @@ class GameViewController: UIViewController {
         scissorsButton.isUserInteractionEnabled = true
         view.addSubview(scissorsButton)
 
-        // signLabel set up
+        // Configure signLabel
+        signLabel.text = "🤖"
         signLabel.frame = CGRect(x: 155, y: 221, width: 120, height: 120)
-        signLabel.font = UIFont.systemFont(ofSize: 40)
-        signLabel.textColor = UIColor.darkGray
+        signLabel.font = UIFont.systemFont(ofSize: buttonFontSize)
+        signLabel.backgroundColor = UIColor.systemGray6
+        signLabel.contentMode = .scaleToFill
         signLabel.textAlignment = .center
+        signLabel.layer.cornerRadius = cornerRadiusValue
+        signLabel.clipsToBounds = true
         view.addSubview(signLabel)
 
-        // playerAgainButton configure
+        // Configure playerAgainButton
         playerAgainButton.configuration = .plain()
         playerAgainButton.setTitle("Play Again", for: .normal)
         playerAgainButton.frame = CGRect(x: 140, y: 486, width: 150, height: 50)
@@ -129,7 +146,7 @@ class GameViewController: UIViewController {
 
         // statusLabel
         statusLabel.frame = CGRect(x: 122, y: 438, width: 187, height: 30)
-        statusLabel.text = "Win or Lose!!!"
+        // statusLabel.text = ""
         statusLabel.textColor = .darkGray
         statusLabel.font = UIFont.systemFont(ofSize: 40)
         statusLabel.adjustsFontSizeToFitWidth = true
@@ -138,11 +155,11 @@ class GameViewController: UIViewController {
         view.addSubview(statusLabel)
 
         // Add target
-        paperButton.addTarget(self, action: #selector(didTappaperButton), for: .touchUpInside)
-        rockButton.addTarget(self, action: #selector(didTaprockButton), for: .touchUpInside)
-        scissorsButton.addTarget(self, action: #selector(didTapscissorsButton), for: .touchUpInside)
+        paperButton.addTarget(self, action: #selector(didTapPaperButton), for: .touchUpInside)
+        rockButton.addTarget(self, action: #selector(didTapRockButton), for: .touchUpInside)
+        scissorsButton.addTarget(self, action: #selector(didTapScissorsButton), for: .touchUpInside)
 //        signLabel.addTarget(self, action: #selector(didTapsignLabel), for: .touchUpInside)
-        playerAgainButton.addTarget(self, action: #selector(didTapplayerAgainButton), for: .touchUpInside)
+        playerAgainButton.addTarget(self, action: #selector(didTapPlayerAgainButton), for: .touchUpInside)
     }
 
     // MARK: - Configure progressView
@@ -215,10 +232,12 @@ class GameViewController: UIViewController {
     }
 
     func play(userSign: Sign) {
-//        let computerSign = randomSign(signLabel)
 
-//        let gameState = userSign.gameState(against: computerSign)
-//        updateUI(forState: gameState)
+       // Let computerSign stored as randomSign.
+       let computerSign = randomSign()
+
+        let gameState = userSign.gameState(against: computerSign)
+        updateUI(forState: gameState)
 
         signLabel.text = "🤖"
 
@@ -245,7 +264,7 @@ class GameViewController: UIViewController {
     }
 
     // MARK: - @objc function added
-    @objc func didTapplayerAgainButton (_ sender: UIButton) {
+    @objc func didTapPlayerAgainButton (_ sender: UIButton) {
         scissorsButton.isHidden = false
         paperButton.isHidden    = false
         rockButton.isHidden     = false
@@ -256,7 +275,7 @@ class GameViewController: UIViewController {
         print(progressViewValueCount)
     }
 
-    @objc func didTaprockButton (_ sender: UIButton) {
+    @objc func didTapRockButton (_ sender: UIButton) {
         scissorsButton.isHidden = true
         paperButton.isHidden    = true
 
@@ -266,7 +285,7 @@ class GameViewController: UIViewController {
         print(progressViewValueCount)
     }
 
-    @objc func didTappaperButton (_ sender: UIButton) {
+    @objc func didTapPaperButton (_ sender: UIButton) {
         rockButton.isHidden     = true
         scissorsButton.isHidden = true
 
@@ -276,18 +295,12 @@ class GameViewController: UIViewController {
         print(progressViewValueCount)
     }
 
-    @objc func didTapscissorsButton (_ sender: UIButton) {
+    @objc func didTapScissorsButton (_ sender: UIButton) {
         play(userSign: .scissors)
         updateGameScoreStatus ()
 
         print("scissorsButtonTapped")
         print(progressViewValueCount)
     }
-
-//    @objc func didTapsignLabel (_ sender: UIButton) {
-//        print("didTapcomputerButton")
-//    }
-
-
 
 }

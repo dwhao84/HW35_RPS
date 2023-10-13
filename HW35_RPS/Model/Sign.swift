@@ -7,6 +7,17 @@
 
 import Foundation
 
+func randomSign () -> Sign {
+    let sign = Int.random(in: 0...2)
+    if sign == 0 {
+        return .rock
+    } else if sign == 1 {
+       return .paper
+    } else {
+       return .scissors
+    }
+}
+
 // MARK: - Define Mode for play
 enum Sign {
     case rock
@@ -24,17 +35,6 @@ enum Sign {
         }
     }
 
-func randomSign () -> Sign {
-    let sign = Int.random(in: 0...2)
-    if sign == 0 {
-        return .rock
-    } else if sign == 1 {
-        return .paper
-    } else {
-        return .scissors
-    }
-}
-
 
     func gameState(against opponentSign: Sign) -> GameState {
 
@@ -42,16 +42,16 @@ func randomSign () -> Sign {
         if self == opponentSign {
             return .draw
         }
-            switch self {
+        switch self {
 
-        // Define win situation
+                // Define win situation
             case.rock:
-                    if opponentSign == .scissors { return .win }
+                if opponentSign == .scissors { return .win }
             case.paper:
-                    if opponentSign == .rock { return .win }
+                if opponentSign == .rock { return .win }
             case .scissors:
-                    if opponentSign == .paper { return .win }
-            }
-            return .loose
+                if opponentSign == .paper { return .win }
         }
+        return .loose
     }
+}
