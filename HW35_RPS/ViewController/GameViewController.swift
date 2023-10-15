@@ -27,6 +27,12 @@ class GameViewController: UIViewController {
 
     let gameRoundLabel = UILabel()
 
+    let playerScoreLabel = UILabel()
+    let pcScoreLabel = UILabel()
+
+    let playerNameTitle = UILabel()
+    let pcNameTitle = UILabel()
+
     // Create the rock icon for game.
     let rockButton      = UIButton(type: .system)
 
@@ -49,12 +55,13 @@ class GameViewController: UIViewController {
         print("Going to RPSGameViewController")
         view.backgroundColor = UIColor.systemGray5
 
+        // Set up the UI statement as start.
         updateUI(forState: .start)
 
         playerNameLabel.text = playerName
+        playerNameTitle.text = playerName
 
         configureUI ()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,16 +70,15 @@ class GameViewController: UIViewController {
         }
 
 
-
     // MARK: - Update GameScoreStatus
     func updateGameScoreStatus () {
         progressView.setProgress( Float(Int(progressViewValueCount)) / 10, animated: true)
         gameRoundLabel.text = "\(Int(progressViewValueCount)) / 10"
-    if progressViewValueCount >= progressViewMaxValue {
+        if progressViewValueCount >= progressViewMaxValue {
         progressViewValueCount += 0
         print("Stop the Game")
     } else {
-        progressViewValueCount += 1
+           showAlertController()
         }
     }
 
@@ -86,6 +92,7 @@ class GameViewController: UIViewController {
     // MARK: - Configure Button
     func configureButton () {
         let buttonFontSize: CGFloat = 70.0
+        let playAgainButtonFontSize = 30.0
         let cornerRadiusValue = 30.0
 
         // Configure paperButton
@@ -140,13 +147,16 @@ class GameViewController: UIViewController {
 
         // Configure playerAgainButton
         playerAgainButton.configuration = .plain()
+        playerAgainButton.tintColor = .systemBlue
         playerAgainButton.setTitle("Play Again", for: .normal)
+        playerAgainButton.contentMode = .scaleToFill
+        playerAgainButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: playAgainButtonFontSize)
+        playerAgainButton.configuration?.buttonSize = .large
         playerAgainButton.frame = CGRect(x: 140, y: 486, width: 150, height: 50)
         view.addSubview(playerAgainButton)
 
         // statusLabel
         statusLabel.frame = CGRect(x: 122, y: 438, width: 187, height: 30)
-        // statusLabel.text = ""
         statusLabel.textColor = .darkGray
         statusLabel.font = UIFont.systemFont(ofSize: 40)
         statusLabel.adjustsFontSizeToFitWidth = true
@@ -202,16 +212,56 @@ class GameViewController: UIViewController {
         pcLabel.textAlignment = .center
         pcLabel.numberOfLines = 1
         view.addSubview(pcLabel)
+
+        pcScoreLabel.text = "0"
+        pcScoreLabel.frame = CGRect(x: 298, y: 135, width: 90, height: 20)
+        pcScoreLabel.font = UIFont.systemFont(ofSize: 25)
+        pcScoreLabel.textAlignment = .center
+        pcScoreLabel.numberOfLines = 1
+        pcScoreLabel.textColor = .darkGray
+        view.addSubview(pcScoreLabel)
+
+        playerScoreLabel.text = "0"
+        playerScoreLabel.frame = CGRect(x: 42, y: 135, width: 90, height: 20)
+        playerScoreLabel.font = UIFont.systemFont(ofSize: 25)
+        playerScoreLabel.textAlignment = .center
+        playerScoreLabel.numberOfLines = 1
+        playerScoreLabel.textColor = .darkGray
+        view.addSubview(playerScoreLabel)
+
+        playerNameTitle.frame = CGRect(x: 45, y: 81, width: 90, height: 20)
+        playerNameTitle.font = UIFont.systemFont(ofSize: 18)
+        playerNameTitle.textAlignment = .center
+        playerNameTitle.numberOfLines = 1
+        playerNameTitle.textColor = .darkGray
+        view.addSubview(playerNameTitle)
+
+        pcNameTitle.text = "PC"
+        pcNameTitle.frame = CGRect(x: 298, y: 81, width: 90, height: 20)
+        pcNameTitle.font = UIFont.systemFont(ofSize: 18)
+        pcNameTitle.textAlignment = .center
+        pcNameTitle.numberOfLines = 1
+        pcNameTitle.textColor = .darkGray
+        view.addSubview(pcNameTitle)
+    }
+
+    func showAlertController() {
+        let alertController = UIAlertController(title: "", message: "Ok", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alertController, animated: true)
     }
 
     // Control UI Statement by enum.
     func updateUI(forState state: GameState) {
         statusLabel.text = state.status
+        view.backgroundColor = UIColor.systemGray5
         switch state {
             case .start:
                 view.backgroundColor = UIColor.systemGray5
 
                 paperButton.setTitle("🖐🏻", for: .normal)
+                rockButton.setTitle("✊🏻", for: .normal)
+                scissorsButton.setTitle("✌🏻", for: .normal)
                 playerAgainButton.isHidden = true
 
                 scissorsButton.isHidden  = false
@@ -223,11 +273,14 @@ class GameViewController: UIViewController {
                 scissorsButton.isEnabled = true
 
             case .win:
-                view.backgroundColor = UIColor.systemBlue
+                view.backgroundColor = UIColor(red: 197/255, green: 214/255, blue: 226/255, alpha: 1)
+                print("Status is WIN")
             case .loose:
-                view.backgroundColor = UIColor.systemMint
-            case .draw:
                 view.backgroundColor = UIColor.systemPink
+                print("Status is LOOSE")
+            case .draw:
+                view.backgroundColor = UIColor.systemMint
+                print("Status is DRAW")
         }
     }
 
@@ -239,7 +292,7 @@ class GameViewController: UIViewController {
         let gameState = userSign.gameState(against: computerSign)
         updateUI(forState: gameState)
 
-        signLabel.text = "🤖"
+        signLabel.text = computerSign.emoji
 
         rockButton.isHidden = true
         paperButton.isHidden = true
@@ -253,54 +306,53 @@ class GameViewController: UIViewController {
 
             case .rock:
                 rockButton.isHidden = false
+                print("UserSign is rock")
 
             case .paper:
                 paperButton.isHidden = false
+                print("UserSign is paper")
 
             case .scissors:
                 scissorsButton.isHidden = false
+                print("UserSign is scissors")
         }
         playerAgainButton.isHidden = false
     }
 
     // MARK: - @objc function added
     @objc func didTapPlayerAgainButton (_ sender: UIButton) {
+        updateUI(forState: .start)
         scissorsButton.isHidden = false
         paperButton.isHidden    = false
         rockButton.isHidden     = false
 
         updateGameScoreStatus()
-
-        print("didTapplayerAgainButton")
-        print(progressViewValueCount)
+        print("didTapPlayerAgainButton")
+//        print(progressViewValueCount)
     }
 
     @objc func didTapRockButton (_ sender: UIButton) {
-        scissorsButton.isHidden = true
-        paperButton.isHidden    = true
-
+        play(userSign: .rock)
         updateGameScoreStatus ()
-
-        print("didTaprockButton")
-        print(progressViewValueCount)
+        progressViewValueCount += 1
+        print("didTapRockButton")
+        print("The progress is now \(progressViewValueCount)")
     }
 
     @objc func didTapPaperButton (_ sender: UIButton) {
-        rockButton.isHidden     = true
-        scissorsButton.isHidden = true
-
+        play(userSign: .paper)
         updateGameScoreStatus ()
-
-        print("didTappaperButton")
-        print(progressViewValueCount)
+        progressViewValueCount += 1
+        print("didTapPaperButton")
+        print("The progress is now \(progressViewValueCount)")
     }
 
     @objc func didTapScissorsButton (_ sender: UIButton) {
         play(userSign: .scissors)
         updateGameScoreStatus ()
-
-        print("scissorsButtonTapped")
-        print(progressViewValueCount)
+        progressViewValueCount += 1
+        print("didScissorsButtonTapped")
+        print("The progress is now \(progressViewValueCount)")
     }
 
 }

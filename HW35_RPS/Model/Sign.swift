@@ -39,19 +39,25 @@ enum Sign {
     func gameState(against opponentSign: Sign) -> GameState {
 
         // Define draw situation
-        if self == opponentSign {
-            return .draw
-        }
-        switch self {
+        if self == opponentSign { return .draw }
 
-                // Define win situation
+        switch self {
+        // Define win situation
             case.rock:
-                if opponentSign == .scissors { return .win }
+                if opponentSign == .scissors {
+                    return .win
+                }
             case.paper:
-                if opponentSign == .rock { return .win }
+                if opponentSign == .rock {
+                    return .win
+                }
             case .scissors:
-                if opponentSign == .paper { return .win }
+                if opponentSign == .paper {
+                    return .win
+
+            }
         }
+        // Define LOOSE situation.
         return .loose
     }
 }

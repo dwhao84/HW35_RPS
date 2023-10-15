@@ -62,7 +62,7 @@ class LoginUserNameViewController: UIViewController {
         loginBtn.configuration = .filled()
         loginBtn.setTitle("Play", for: .normal)
         loginBtn.isUserInteractionEnabled = true
-        loginBtn.layer.cornerRadius = cornerRadiusValue / 4
+        loginBtn.layer.cornerRadius = cornerRadiusValue 
         loginBtn.clipsToBounds = true
         view.addSubview(loginBtn)
 
