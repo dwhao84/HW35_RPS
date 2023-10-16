@@ -177,20 +177,6 @@ class GameViewController: UIViewController {
         scissorsButton.addTarget(self, action: #selector(didTapScissorsButton), for: .touchUpInside)
 
         playerAgainButton.addTarget(self, action: #selector(didTapPlayerAgainButton), for: .touchUpInside)
-
-        // Auto Layout
-//        paperButton.translatesAutoresizingMaskIntoConstraints = false
-//        rockButton.translatesAutoresizingMaskIntoConstraints = false
-//        scissorsButton.translatesAutoresizingMaskIntoConstraints = false
-
-//        NSLayoutConstraint.activate([
-//            paperButton.widthAnchor.constraint(equalToConstant: 120),
-//            paperButton.heightAnchor.constraint(equalToConstant: 120),
-//            rockButton.widthAnchor.constraint(equalToConstant: 120),
-//            rockButton.heightAnchor.constraint(equalToConstant: 120),
-//            scissorsButton.widthAnchor.constraint(equalToConstant: 120),
-//            scissorsButton.heightAnchor.constraint(equalToConstant: 120)
-//        ])
     }
 
     // MARK: - Configure progressView
@@ -401,7 +387,6 @@ class GameViewController: UIViewController {
 
         updateGameScoreStatus()
         print("didTapPlayerAgainButton")
-//        print(progressViewValueCount)
     }
 
     @objc func didTapRockButton (_ sender: UIButton) {
