@@ -98,7 +98,7 @@ class LoginUserNameViewController: UIViewController {
             loginUserNameTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             loginUserNameTextField.heightAnchor.constraint(equalToConstant: 44), // Standard touch target size
 
-            loginBtn.topAnchor.constraint(equalTo: loginUserNameTextField.bottomAnchor, constant: 20),
+            loginBtn.topAnchor.constraint(equalTo: loginUserNameTextField.bottomAnchor, constant: 30),
             loginBtn.leadingAnchor.constraint(equalTo: loginUserNameTextField.leadingAnchor),
             loginBtn.trailingAnchor.constraint(equalTo: loginUserNameTextField.trailingAnchor),
             loginBtn.heightAnchor.constraint(equalToConstant: 44) // Standard button height

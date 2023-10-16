@@ -14,6 +14,7 @@ enum GameState {
     case loose
     case draw
 
+    // Computed property
     // Use the Enum switch function to define the different statment for Game.
     var status: String {
         switch self {

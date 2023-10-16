@@ -54,7 +54,6 @@ enum Sign {
             case .scissors:
                 if opponentSign == .paper {
                     return .win
-
             }
         }
         // Define LOOSE situation.

@@ -25,10 +25,14 @@ class GameViewController: UIViewController {
 
     var playerNameString : String?
 
-    let gameRoundLabel = UILabel()
+    let gameRoundLabel = UILabel ()
+    let gameRoundNumberLabel = UILabel()
 
     let playerScoreLabel = UILabel()
     let pcScoreLabel = UILabel()
+
+    var playerScoreValue = 0
+    var pcScoreValue = 0
 
     let playerNameTitle = UILabel()
     let pcNameTitle = UILabel()
@@ -69,17 +73,29 @@ class GameViewController: UIViewController {
             // Dispose of any resources that can be recreated.
         }
 
-
     // MARK: - Update GameScoreStatus
     func updateGameScoreStatus () {
         progressView.setProgress( Float(Int(progressViewValueCount)) / 10, animated: true)
-        gameRoundLabel.text = "\(Int(progressViewValueCount)) / 10"
-        if progressViewValueCount >= progressViewMaxValue {
-        progressViewValueCount += 0
-        print("Stop the Game")
-    } else {
-           showAlertController()
-        }
+        gameRoundNumberLabel.text = "\(Int(progressViewValueCount)) / 10"
+
+        if progressViewValueCount == progressViewMaxValue {
+            if playerScoreValue > pcScoreValue {
+                showWinAlertController()
+                print("YOU WIN")
+            } else if playerScoreValue < pcScoreValue {
+                showLooseAlertController()
+                print("YOU LOOSE")
+            } else if playerScoreValue == pcScoreValue {
+                showDrawAlertController()
+                print("WE DRAW")
+            }
+            print("Stop the Game")
+
+        } else if progressViewValueCount < progressViewMaxValue {
+            print("Continue the Game")
+        } else {
+            print("")
+      }
     }
 
     // MARK: - Combine configure Button / Label / ProgressView
@@ -155,21 +171,26 @@ class GameViewController: UIViewController {
         playerAgainButton.frame = CGRect(x: 140, y: 486, width: 150, height: 50)
         view.addSubview(playerAgainButton)
 
-        // statusLabel
-        statusLabel.frame = CGRect(x: 122, y: 438, width: 187, height: 30)
-        statusLabel.textColor = .darkGray
-        statusLabel.font = UIFont.systemFont(ofSize: 40)
-        statusLabel.adjustsFontSizeToFitWidth = true
-        statusLabel.textAlignment = .center
-        statusLabel.numberOfLines = 1
-        view.addSubview(statusLabel)
-
         // Add target
         paperButton.addTarget(self, action: #selector(didTapPaperButton), for: .touchUpInside)
         rockButton.addTarget(self, action: #selector(didTapRockButton), for: .touchUpInside)
         scissorsButton.addTarget(self, action: #selector(didTapScissorsButton), for: .touchUpInside)
-//        signLabel.addTarget(self, action: #selector(didTapsignLabel), for: .touchUpInside)
+
         playerAgainButton.addTarget(self, action: #selector(didTapPlayerAgainButton), for: .touchUpInside)
+
+        // Auto Layout
+//        paperButton.translatesAutoresizingMaskIntoConstraints = false
+//        rockButton.translatesAutoresizingMaskIntoConstraints = false
+//        scissorsButton.translatesAutoresizingMaskIntoConstraints = false
+
+//        NSLayoutConstraint.activate([
+//            paperButton.widthAnchor.constraint(equalToConstant: 120),
+//            paperButton.heightAnchor.constraint(equalToConstant: 120),
+//            rockButton.widthAnchor.constraint(equalToConstant: 120),
+//            rockButton.heightAnchor.constraint(equalToConstant: 120),
+//            scissorsButton.widthAnchor.constraint(equalToConstant: 120),
+//            scissorsButton.heightAnchor.constraint(equalToConstant: 120)
+//        ])
     }
 
     // MARK: - Configure progressView
@@ -184,8 +205,19 @@ class GameViewController: UIViewController {
 
     // MARK: - Configure Label
     func configureLabel () {
+
+        // statusLabel
+        statusLabel.frame = CGRect(x: 122, y: 438, width: 187, height: 30)
+        statusLabel.textColor = .darkGray
+        statusLabel.font = UIFont.systemFont(ofSize: 40)
+        statusLabel.adjustsFontSizeToFitWidth = true
+        statusLabel.textAlignment = .center
+        statusLabel.numberOfLines = 1
+        view.addSubview(statusLabel)
+
         // gameRoundLabel
-        gameRoundLabel.frame = CGRect(x: 366, y: 798, width: 42, height: 20)
+        gameRoundLabel.text = "Game Round"
+        gameRoundLabel.frame = CGRect(x: 20, y: 798, width: 99, height: 21)
         gameRoundLabel.textColor = .darkGray
         gameRoundLabel.font = UIFont.systemFont(ofSize: 20)
         gameRoundLabel.adjustsFontSizeToFitWidth = true
@@ -193,8 +225,17 @@ class GameViewController: UIViewController {
         gameRoundLabel.numberOfLines = 1
         view.addSubview(gameRoundLabel)
 
+        // gameRoundNumberLabel
+        gameRoundNumberLabel.text = "\(Int(progressViewValueCount)) / 10"
+        gameRoundNumberLabel.frame = CGRect(x: 366, y: 798, width: 42, height: 20)
+        gameRoundNumberLabel.textColor = .darkGray
+        gameRoundNumberLabel.font = UIFont.systemFont(ofSize: 20)
+        gameRoundNumberLabel.adjustsFontSizeToFitWidth = true
+        gameRoundNumberLabel.textAlignment = .center
+        gameRoundNumberLabel.numberOfLines = 1
+        view.addSubview(gameRoundNumberLabel)
+
         // playerNameLabel
-//        playerNameLabel.text = "Unknown"
         playerNameLabel.frame = CGRect(x: 325, y: 566, width: 90, height: 20)
         playerNameLabel.textColor = .darkGray
         playerNameLabel.font = UIFont.systemFont(ofSize: 20)
@@ -213,22 +254,25 @@ class GameViewController: UIViewController {
         pcLabel.numberOfLines = 1
         view.addSubview(pcLabel)
 
+        // pcScoreLabel
         pcScoreLabel.text = "0"
         pcScoreLabel.frame = CGRect(x: 298, y: 135, width: 90, height: 20)
-        pcScoreLabel.font = UIFont.systemFont(ofSize: 25)
+        pcScoreLabel.font = UIFont.boldSystemFont(ofSize: 25)
         pcScoreLabel.textAlignment = .center
         pcScoreLabel.numberOfLines = 1
         pcScoreLabel.textColor = .darkGray
         view.addSubview(pcScoreLabel)
 
+        // playerScoreLabel
         playerScoreLabel.text = "0"
         playerScoreLabel.frame = CGRect(x: 42, y: 135, width: 90, height: 20)
-        playerScoreLabel.font = UIFont.systemFont(ofSize: 25)
+        playerScoreLabel.font = UIFont.boldSystemFont(ofSize: 25)
         playerScoreLabel.textAlignment = .center
         playerScoreLabel.numberOfLines = 1
         playerScoreLabel.textColor = .darkGray
         view.addSubview(playerScoreLabel)
 
+        // playerNameTitle
         playerNameTitle.frame = CGRect(x: 45, y: 81, width: 90, height: 20)
         playerNameTitle.font = UIFont.systemFont(ofSize: 18)
         playerNameTitle.textAlignment = .center
@@ -236,6 +280,7 @@ class GameViewController: UIViewController {
         playerNameTitle.textColor = .darkGray
         view.addSubview(playerNameTitle)
 
+        // pcNameTitle
         pcNameTitle.text = "PC"
         pcNameTitle.frame = CGRect(x: 298, y: 81, width: 90, height: 20)
         pcNameTitle.font = UIFont.systemFont(ofSize: 18)
@@ -245,23 +290,44 @@ class GameViewController: UIViewController {
         view.addSubview(pcNameTitle)
     }
 
-    func showAlertController() {
-        let alertController = UIAlertController(title: "", message: "Ok", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        present(alertController, animated: true)
+    // MARK: - Configure AlertController
+    // Show the alertController when the progressViewCount equals or over ten.
+    func showWinAlertController() {
+        let winController = UIAlertController(title: "You Win!🎉", message: "Congratulations", preferredStyle: .alert)
+        winController.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(winController, animated: true)
     }
 
+    func showLooseAlertController () {
+        let looseController = UIAlertController(title: "Keep going!🙌🏻", message: "Don't Give Up", preferredStyle: .alert)
+        looseController.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(looseController, animated: true)
+    }
+
+    func showDrawAlertController () {
+        let drawController = UIAlertController(title: "Draw!🤝🏻", message: "Keep Challange!", preferredStyle: .alert)
+        drawController.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(drawController, animated: true)
+    }
+
+    // MARK: - Configure UI statement
     // Control UI Statement by enum.
     func updateUI(forState state: GameState) {
+
         statusLabel.text = state.status
         view.backgroundColor = UIColor.systemGray5
+
         switch state {
             case .start:
                 view.backgroundColor = UIColor.systemGray5
 
+                // When signLabel change to start mode, let the signLabel.text change to Robots icon.
+                // Same as the rest of icon.
+                signLabel.text = "🤖"
                 paperButton.setTitle("🖐🏻", for: .normal)
                 rockButton.setTitle("✊🏻", for: .normal)
                 scissorsButton.setTitle("✌🏻", for: .normal)
+
                 playerAgainButton.isHidden = true
 
                 scissorsButton.isHidden  = false
@@ -275,14 +341,22 @@ class GameViewController: UIViewController {
             case .win:
                 view.backgroundColor = UIColor(red: 197/255, green: 214/255, blue: 226/255, alpha: 1)
                 print("Status is WIN")
+                playerScoreValue += 1
+                progressViewValueCount += 1
+                playerScoreLabel.text = String(playerScoreValue)
             case .loose:
                 view.backgroundColor = UIColor.systemPink
                 print("Status is LOOSE")
+                pcScoreValue += 1
+                progressViewValueCount += 1
+                pcScoreLabel.text = String(pcScoreValue)
             case .draw:
                 view.backgroundColor = UIColor.systemMint
                 print("Status is DRAW")
+                progressViewValueCount += 1
         }
     }
+
 
     func play(userSign: Sign) {
 
@@ -303,7 +377,6 @@ class GameViewController: UIViewController {
         scissorsButton.isEnabled = false
 
         switch userSign {
-
             case .rock:
                 rockButton.isHidden = false
                 print("UserSign is rock")
@@ -334,25 +407,19 @@ class GameViewController: UIViewController {
     @objc func didTapRockButton (_ sender: UIButton) {
         play(userSign: .rock)
         updateGameScoreStatus ()
-        progressViewValueCount += 1
         print("didTapRockButton")
-        print("The progress is now \(progressViewValueCount)")
     }
 
     @objc func didTapPaperButton (_ sender: UIButton) {
         play(userSign: .paper)
         updateGameScoreStatus ()
-        progressViewValueCount += 1
         print("didTapPaperButton")
-        print("The progress is now \(progressViewValueCount)")
     }
 
     @objc func didTapScissorsButton (_ sender: UIButton) {
         play(userSign: .scissors)
         updateGameScoreStatus ()
-        progressViewValueCount += 1
         print("didScissorsButtonTapped")
-        print("The progress is now \(progressViewValueCount)")
     }
 
 }
