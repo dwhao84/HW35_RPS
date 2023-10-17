@@ -26,7 +26,6 @@ class LoginUserNameViewController: UIViewController {
         print("viewDidAppear")
     }
 
-
     // Create function for tap loginNameTextField.
     @objc func didTapLoginNameTextField () {
         print("loginNameTextField tapped")
